@@ -1,0 +1,19 @@
+span {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    span.red {
+        color: red;
+    }
+
+    span.green {
+        color: yellow;
+    }
+
+    #special {
+        font-size: 70px;
+        font-weight: bold;
+        font-style: italic;
+        color: blue;
+    }
