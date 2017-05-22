@@ -10,7 +10,7 @@
 
 [NodeJS](https://nodejs.org/en/)
 
-[Домашние задания](https://github.com/atishin/practice17/HOMEWORK.md)
+[Домашние задания](https://github.com/atishin/practice17/blob/master/HOMEWOKS.md)
 
 ## Контакты
 
