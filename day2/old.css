@@ -1,0 +1,23 @@
+div {
+    border: 1px solid #555;
+}
+
+div.main {
+    font-size: 0;
+}
+
+div.col {
+    border-color: red;
+    display: inline-block;
+    width: 33%;
+    font-size: 16px;
+}
+
+div.float.col-3 {
+    clear: right;
+}
+
+div.float {
+    float: left;
+    width: 33%;
+}
