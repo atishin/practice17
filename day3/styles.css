@@ -1,0 +1,13 @@
+#test {
+    background: gray;
+    width: 100%;
+    height: 400px;
+}
+
+#test.red {
+    background: red;
+}
+
+#test.green {
+    background: green;
+}

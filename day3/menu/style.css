@@ -1,0 +1,70 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
+header {
+    height: 100px;
+    background: #666;
+    color: #fff;
+}
+
+nav > ul {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav > ul li {
+    display: flex;
+    padding: 0 20px;
+    font-size: 30px;
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+nav > ul li:hover {
+    cursor: pointer;
+    background: #777;
+}
+
+ul.sub-menu {
+    display: none;
+    position: absolute;
+    min-width: 100%;
+    top: 100%;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    background: #666;
+}
+
+ul.sub-menu.active {
+    display: block;
+}
+
+ul.sub-menu li {
+    white-space: nowrap;
+    padding: 20px;
+}
+
+ul.sub-menu li:hover {
+    cursor: pointer;
+    background: #777;
+}
+
+main {
+    flex: 1 0 auto;
+    background: #999;
+}
