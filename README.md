@@ -12,6 +12,8 @@
 
 [Домашние задания](https://github.com/atishin/practice17/blob/master/HOMEWOKS.md)
 
+[Посещаемость и сдача домашек](https://1drv.ms/x/s!AgawRcQo_GyPgZl2N-dnO-D1DVoO3g)
+
 ## Контакты
 
 **E-mail**: atishin93@gmail.com
