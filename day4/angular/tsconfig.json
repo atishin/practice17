@@ -4,6 +4,10 @@
         "allowJs": true,
         "noImplicitAny": false,
         "target": "es5",
-        "module": "none"
+        "module": "none",
+        "moduleResolution": "node",
+        "typeRoots": [
+            "node_modules/@types"
+        ]
     }
 }
