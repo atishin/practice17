@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body ng-app="taskmanagerModule">
+    <div class="taskmanager" ng-controller="taskmanagerCtrl as $ctrl">
+        <div>
+            <input type="text" ng-model="$ctrl.newTask">
+            <button ng-click="$ctrl.addTask()">Add</button>
+            <div>
+                {{$ctrl.newTask}}
+            </div>
+        </div>
+        <ul>
+            <li ng-repeat="item in $ctrl.list">{{ item }}</li>
+        </ul>
+    </div>
+
+    <script src="angular.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
