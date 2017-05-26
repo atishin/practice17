@@ -10,7 +10,15 @@
 
 [NodeJS](https://nodejs.org/en/)
 
+[AngularJs](http://angularjs.org)
+
+[Lodash](https://lodash.com/)
+
 **Установка Typescript**: [npm install -g typescript]
+
+[tsc < filename >] = скомпилировать файл
+
+[tsc -w] = Запустить автоматическую компиляцию
 
 [Домашние задания](https://github.com/atishin/practice17/blob/master/HOMEWOKS.md)
 

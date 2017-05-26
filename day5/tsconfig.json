@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "baseUrl": "",
+        "allowJs": true,
+        "noImplicitAny": false,
+        "target": "es5",
+        "module": "none",
+        "moduleResolution": "node",
+        "typeRoots": [
+            "node_modules/@types"
+        ]
+    }
+}
