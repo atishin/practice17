@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-app="taskmanager">
+
+    <main>
+        <aside>
+            <tm-task-form></tm-task-form>
+        </aside>
+        <div class="content">
+            <tm-task-list></tm-task-list>
+        </div>
+    </main>
+    <footer></footer>
+
+    
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+    <script src="node_modules/lodash/lodash.min.js"></script>
+    <script src="node_modules/moment/moment.js"></script>
+
+    
+    <script src="app.js"></script>
+    <script src="src/task.service.js"></script>
+    <script src="src/task-list/task-list.component.js"></script>
+    <script src="src/task-form/task-form.component.js"></script>
+
+</body>
+</html>
