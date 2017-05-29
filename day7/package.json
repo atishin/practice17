@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "tsc -w",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "lite-server"
   },
   "author": "",
   "license": "ISC",
@@ -16,11 +17,13 @@
     "angular-cookies": "^1.6.4",
     "lodash": "^4.17.4",
     "moment": "^2.18.1"
-  }, "devDependencies": {
-    "typescript": "^2.3.3",
-    "@types/jquery": "^2.0.45",
+  },
+  "devDependencies": {
     "@types/angular": "^1.6.17",
     "@types/angular-cookies": "^1.4.3",
-    "@types/lodash": "^4.14.64"
+    "@types/jquery": "^2.0.45",
+    "@types/lodash": "^4.14.64",
+    "lite-server": "^2.3.0",
+    "typescript": "^2.3.3"
   }
 }

@@ -24,13 +24,7 @@ namespace TaskManager {
 
     export const TaskListComponentDefinition: ng.IComponentOptions = {
         controller: TaskListComponent,
-        template: 
-`
-    <div class="task-item" ng-repeat="task in $ctrl.taskService.tasks" ng-class="{finished: task.finished}">
-        <span>{{ task.text }}</span>
-        <button ng-click="$ctrl.finishTask(task)">Finish</button>
-    </div>
-`
+        templateUrl: '/src/task-list/task-list.template.html'
     }
 
     MODULE.component('tmTaskList', TaskListComponentDefinition);

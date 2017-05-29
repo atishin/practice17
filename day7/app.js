@@ -1,4 +1,6 @@
 var TaskManager;
 (function (TaskManager) {
-    TaskManager.MODULE = angular.module('taskmanager', []);
+    TaskManager.MODULE = angular.module('taskmanager', [
+        'ngCookies'
+    ]);
 })(TaskManager || (TaskManager = {}));

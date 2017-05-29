@@ -23,7 +23,7 @@ var TaskManager;
     TaskListComponent.$inject = ['taskService'];
     TaskManager.TaskListComponentDefinition = {
         controller: TaskListComponent,
-        template: "\n    <div class=\"task-item\" ng-repeat=\"task in $ctrl.taskService.tasks\" ng-class=\"{finished: task.finished}\">\n        <span>{{ task.text }}</span>\n        <button ng-click=\"$ctrl.finishTask(task)\">Finish</button>\n    </div>\n"
+        templateUrl: '/src/task-list/task-list.template.html'
     };
     TaskManager.MODULE.component('tmTaskList', TaskManager.TaskListComponentDefinition);
 })(TaskManager || (TaskManager = {}));
