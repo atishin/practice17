@@ -1,0 +1,24 @@
+<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Log in</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <div class="login-form">
+            <md-input-container>
+                <label>Login</label>
+                <input type="text" ng-model="$ctrl.user.login">
+            </md-input-container>
+            <md-input-container>
+                <label>Password</label>
+                <input type="password" ng-model="$ctrl.user.password">
+            </md-input-container>
+        </div>
+
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="$ctrl.login()">Sign In</md-button>
+        <md-button>Register</md-button>
+    </md-card-actions>
+</md-card>

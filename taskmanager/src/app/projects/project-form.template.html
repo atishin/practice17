@@ -1,0 +1,23 @@
+<md-card>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Project creation</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <div class="project-form">
+            <md-input-container>
+                <label>Title</label>
+                <input type="text" ng-model="$ctrl.project.Title">
+            </md-input-container>
+            <md-input-container>
+                <label>Description</label>
+                <input type="text" ng-model="$ctrl.project.Description">
+            </md-input-container>
+        </div>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-raised md-primary" ng-click="$ctrl.create()">Create</md-button>
+        <md-button ng-click="$ctrl.onProjectCancel()">Cancel</md-button>
+    </md-card-actions>
+</md-card>

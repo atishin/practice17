@@ -1,0 +1,20 @@
+<aside class="projects-aside">
+    <md-list ng-cloak>
+        <md-subheader class="md-sticky">System projects</md-subheader>
+        <md-list-item ng-repeat-start="project in $ctrl.projects" class="md-2-line">
+            <div class="md-list-item-text">
+                <h3>{{ project.Title }}</h3>
+                <p> {{ project.Description }} </p>
+            </div>
+            <md-button class="md-secondary md-primary" ng-click="$ctrl.selectProject(project)">Show Tasks</md-button>
+        </md-list-item>
+        <md-divider ng-repeat-end></md-divider>
+    </md-list>
+    <md-button class="md-primary md-fab md-fab-bottom-right" aria-label="Eat cake" ng-click="$ctrl.addProject()">
+        <md-icon>add</md-icon>
+    </md-button>
+</aside>
+<main>
+    <tm-project-form ng-if="$ctrl.isProjectFormActive" on-project-create="$ctrl.onProjectCreate(project)" on-project-cancel="$ctrl.onProjectCancel()"></tm-project-form>
+    <tm-task-list project="$ctrl.selectedProject"></tm-task-list>
+</main>
