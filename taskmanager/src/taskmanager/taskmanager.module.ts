@@ -126,7 +126,7 @@ namespace TaskManager {
             if (!this.auth.IsAuthenticated()) {
                 defered.reject('Not authorized');
             } else {
-                this.$http.get<any>(`${API_URL}/odata/OProjects`).then(r => r.data).then(data => defered.resolve(data.value));
+                this.$http.get<any>(`${API_URL}/odata/OProjects?$filter=ManagerId eq '${this.auth.GetUserId()}'`).then(r => r.data).then(data => defered.resolve(data.value));
             }
             return defered.promise;
         }

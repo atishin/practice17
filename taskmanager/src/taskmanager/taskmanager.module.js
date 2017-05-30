@@ -65,7 +65,7 @@ var TaskManager;
                 defered.reject('Not authorized');
             }
             else {
-                this.$http.get(TaskManager.API_URL + "/odata/OProjects").then(function (r) { return r.data; }).then(function (data) { return defered.resolve(data.value); });
+                this.$http.get(TaskManager.API_URL + "/odata/OProjects?$filter=ManagerId eq '" + this.auth.GetUserId() + "'").then(function (r) { return r.data; }).then(function (data) { return defered.resolve(data.value); });
             }
             return defered.promise;
         };
