@@ -8,11 +8,18 @@
     <md-card-content>
         <md-list>
             <md-list-item ng-repeat-start="task in $ctrl.tasks" class="md-2-line">
-
+                <div class="md-list-item-text">
+                    <h3>{{ task.Title }}</h3>
+                    <p> {{ task.Description }} </p>
+                </div>
             </md-list-item>
+            <md-divider ng-repeat-end></md-divider>
         </md-list>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
 
     </md-card-actions>
 </md-card>
+<md-button class="md-primary md-fab md-fab-bottom-right" aria-label="Eat cake" ng-click="$ctrl.addTask()">
+    <md-icon>add</md-icon>
+</md-button>

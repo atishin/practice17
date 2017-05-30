@@ -87,8 +87,81 @@ var TaskManager;
     }());
     TaskManager.ProjectService = ProjectService;
     ProjectService.$inject = ['tmAuthService', '$http', '$q'];
+    var TaskService = (function () {
+        function TaskService(auth, $http, $q) {
+            this.auth = auth;
+            this.$http = $http;
+            this.$q = $q;
+        }
+        TaskService.prototype.GetTasks = function (projectId) {
+            var defered = this.$q.defer();
+            if (!this.auth.IsAuthenticated()) {
+                defered.reject('Not authorized');
+            }
+            else {
+                this.$http.get(TaskManager.API_URL + "/odata/OProjectTasks?$expand=TaskStatus&$filter=ProjectId eq " + projectId)
+                    .then(function (r) { return r.data; }, defered.reject).then(function (data) { return defered.resolve(data.value); });
+            }
+            return defered.promise;
+        };
+        TaskService.prototype.GetTask = function (id) {
+            var defered = this.$q.defer();
+            if (!this.auth.IsAuthenticated()) {
+                defered.reject('Not authorized');
+            }
+            else {
+                this.$http.get(TaskManager.API_URL + "/odata/OTaskStatus(" + id + ")").then(function (r) { return r.data; }, defered.reject);
+            }
+            return defered.promise;
+        };
+        TaskService.prototype.SetStatus = function (taskId, statusId) {
+            var _this = this;
+            var defered = this.$q.defer();
+            if (!this.auth.IsAuthenticated()) {
+                defered.reject('Not authorized');
+            }
+            else {
+                this.GetTask(taskId).then(function (task) {
+                    delete task.ClosedByUser;
+                    delete task.Project;
+                    delete task.TaskStatus;
+                    task.TaskStatusId = statusId;
+                    _this.$http.put(TaskManager.API_URL + "/odata/OTaskStatus(" + taskId + ")", task).then(function (r) { return defered.resolve(r.data); }, defered.reject);
+                }, defered.reject);
+            }
+            return defered.promise;
+        };
+        TaskService.prototype.GetStatuses = function () {
+            var defered = this.$q.defer();
+            if (!this.auth.IsAuthenticated()) {
+                defered.reject('Not authorized');
+            }
+            else {
+                this.$http.get(TaskManager.API_URL + "/odata/OTaskStatus").then(function (r) { return r.data; }, defered.reject).then(function (data) { return defered.resolve(data.value); });
+            }
+            return defered.promise;
+        };
+        TaskService.prototype.Create = function (task) {
+            var defered = this.$q.defer();
+            if (!this.auth.IsAuthenticated()) {
+                defered.reject('Not authorized');
+            }
+            else {
+                delete task.ClosedByUser;
+                delete task.Project;
+                delete task.TaskStatus;
+                task.StartDate = new Date();
+                this.$http.post(TaskManager.API_URL + "/odata/OProjectTasks", task).then(function (r) { return r.data; }, defered.reject).then(function (data) { return defered.resolve(data); });
+            }
+            return defered.promise;
+        };
+        return TaskService;
+    }());
+    TaskManager.TaskService = TaskService;
+    TaskService.$inject = ['tmAuthService', '$http', '$q'];
     TaskManager.MODULE = angular.module('taskmanager', []);
     TaskManager.MODULE.service('tmStorageService', StorageService);
     TaskManager.MODULE.service('tmAuthService', AuthService);
     TaskManager.MODULE.service('tmProjectService', ProjectService);
+    TaskManager.MODULE.service('tmTaskService', TaskService);
 })(TaskManager || (TaskManager = {}));

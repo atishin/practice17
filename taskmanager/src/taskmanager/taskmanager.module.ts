@@ -147,11 +147,80 @@ namespace TaskManager {
     }
     ProjectService.$inject = ['tmAuthService', '$http', '$q'];
 
+    export class TaskService {
+        constructor(private auth: AuthService, private $http: ng.IHttpService, private $q: ng.IQService) { }
+
+        public GetTasks(projectId: number): ng.IPromise<ITask[]> {
+            const defered = this.$q.defer();
+            if (!this.auth.IsAuthenticated()) {
+                defered.reject('Not authorized');
+            } else {
+                this.$http.get<any>(`${API_URL}/odata/OProjectTasks?$expand=TaskStatus&$filter=ProjectId eq ${projectId}`)
+                .then(r => r.data, defered.reject).then(data => defered.resolve(data.value));
+            }
+            return defered.promise;
+        }
+
+        public GetTask(id: number): ng.IPromise<ITask> {
+            const defered = this.$q.defer();
+            if (!this.auth.IsAuthenticated()) {
+                defered.reject('Not authorized');
+            } else {
+                this.$http.get<any>(`${API_URL}/odata/OTaskStatus(${id})`).then(r => r.data, defered.reject);
+            }
+            return defered.promise;
+        }
+
+        public SetStatus(taskId: number, statusId: number) {
+            const defered = this.$q.defer();
+            if (!this.auth.IsAuthenticated()) {
+                defered.reject('Not authorized');
+            } else {
+                this.GetTask(taskId).then(task => {
+                    delete task.ClosedByUser;
+                    delete task.Project;
+                    delete task.TaskStatus;
+                    task.TaskStatusId = statusId;
+                    this.$http.put(`${API_URL}/odata/OTaskStatus(${taskId})`, task).then(r => defered.resolve(r.data), defered.reject);
+                }, defered.reject);
+            }
+            return defered.promise;
+
+        }
+
+        public GetStatuses(): ng.IPromise<ITaskStatus[]> {
+            const defered = this.$q.defer();
+            if (!this.auth.IsAuthenticated()) {
+                defered.reject('Not authorized');
+            } else {
+                this.$http.get<any>(`${API_URL}/odata/OTaskStatus`).then(r => r.data, defered.reject).then(data => defered.resolve(data.value));
+            }
+            return defered.promise;
+        }
+
+        public Create(task: Partial<ITask>): ng.IPromise<ITask> {
+            const defered = this.$q.defer();
+            if (!this.auth.IsAuthenticated()) {
+                defered.reject('Not authorized');
+            } else {
+                delete task.ClosedByUser;
+                delete task.Project;
+                delete task.TaskStatus;
+                task.StartDate = new Date();
+
+                this.$http.post<any>(`${API_URL}/odata/OProjectTasks`, task).then(r => r.data, defered.reject).then(data => defered.resolve(data));
+            }
+            return defered.promise;
+        }
+    }
+    TaskService.$inject = ['tmAuthService', '$http', '$q']
+
     export const MODULE = angular.module('taskmanager', []);
 
     MODULE.service('tmStorageService', StorageService);
     MODULE.service('tmAuthService', AuthService);
     MODULE.service('tmProjectService', ProjectService);
+    MODULE.service('tmTaskService', TaskService);
 
 
 
