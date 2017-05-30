@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "noImplicitAny": false,
+        "target": "es5",
+        "typeRoots": [
+            "node_modules/@types",
+            "node_modules/practice-17-taskmanager"
+        ]
+    },
+    "exclude": [
+        "node_modules/**/*"
+    ]
+}

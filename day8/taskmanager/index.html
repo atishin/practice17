@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body ng-app="app">
+    <div ng-controller="logincontroller as $ctrl">
+        <div><input type="text" placeholder="Login" ng-model="$ctrl.login"></div>
+        <div><input type="password" placeholder="Password" ng-model="$ctrl.password"></div>
+        <div><button ng-click="$ctrl.singin()">Sign in</button></div>
+    </div>
+
+    <div ng-controller="testcontroller as $ctrl">
+        <ul>
+            <li ng-repeat="project in $ctrl.projects" ng-click="$ctrl.showTasks(project)">
+                {{project.Title}}
+            </li>
+        </ul>
+        <task-list project="$ctrl.selectedProject"></task-list>
+    </div>
+
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script scr="node_modules/lodash/lodash.min.js"></script>
+
+    <script src="node_modules/practice-17-taskmanager/index.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
